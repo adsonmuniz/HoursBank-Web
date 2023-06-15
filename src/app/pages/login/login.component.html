@@ -1,0 +1,30 @@
+<div class="card text-white bg-info mb-3" style="min-width: 20rem; max-width: 24rem;">
+    <div class="card-header">LOGIN</div>
+    <div class="card-body">
+        <form #loginForm="ngForm">
+            <div class="form-group">
+                <label for="email"><span class="required">* </span>Email:</label>
+                <input id="email" name="email" type="email" [(ngModel)]="data.email" class="form-control input"
+                    placeholder="email@exemplo.com.br" required>
+                <div *ngIf="loginForm.submitted && loginForm.controls['email'].errors" class="text-danger">
+                    Este campo é obrigatório.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password"><span class="required">* </span>Senha:</label>
+                <input id="password" name="password" type="password" [(ngModel)]="data.password"
+                    class="form-control input" placeholder="Digite sua senha" required>
+                <div *ngIf="loginForm.submitted && loginForm.controls['password'].errors" class="text-danger">
+                    Este campo é obrigatório.
+                </div>
+            </div>
+            <div class="btn-area">
+                <button class="btn btn-primary submit" type="submit" (click)="login()">Entrar</button>
+            </div>
+        </form>
+        <div>
+            <a routerLink="/register"><img src="../../../assets/img/icons/add_circle.svg" alt=""> Registre-se</a>
+        </div>
+    </div>
+</div>

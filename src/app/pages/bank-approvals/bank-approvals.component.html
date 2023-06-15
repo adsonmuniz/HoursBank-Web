@@ -1,0 +1,47 @@
+<app-title name="Aprovar Horas"></app-title>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Time</th>
+                <th>Início</th>
+                <th>Fim</th>
+                <th>Tipo</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="banks.length; else other_content">
+            <tr *ngFor="let bank of banks">
+                <td>
+                    <a routerLink="/bank/details/{{bank.id}}">
+                        {{ bank.userName }}
+                    </a>
+                </td>
+                <td>
+                    {{ bank.teamName }}
+                </td>
+                <td>
+                    {{bank.start | date: 'dd/MM/yyyy HH:mm'}}
+                </td>
+                <td>
+                    {{bank.end | date: 'dd/MM/yyyy HH:mm'}}
+                </td>
+                <td>
+                    {{ bank.typeId == 1 ? "Acréscimo" : "Desconto" }}
+                </td>
+            </tr>
+        </tbody>
+        <ng-template #other_content>
+            <tbody>
+                <tr>
+                    <td colspan="5" style="text-align: center;">
+                        Não existe nenhum lançamento para aprovação!
+                    </td>
+                </tr>
+            </tbody>
+        </ng-template>
+    </table>
+    <div class="btn-area">
+        <a routerLink="/home" class="btn btn-secondary btn-margin">Voltar</a>
+    </div>
+</div>

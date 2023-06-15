@@ -1,0 +1,42 @@
+<app-title name="Aprovar Usuários"></app-title>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Time</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="users.length; else other_content">
+            <tr *ngFor="let user of users">
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    <select [(ngModel)]="user.teamId">
+                        <option *ngFor="let team of teams" [value]="team.id">{{ team.name }}</option>
+                    </select>
+                </td>
+                <td>
+                    <a (click)="reject(user.id)"><img src="../../../assets/img/icons/remove_circle.svg"
+                            title="Recusar"></a>
+                    <a (click)="approve(user.id)"><img src="../../../assets/img/icons/add_circle.svg"
+                            title="Aprovar"></a>
+                </td>
+            </tr>
+        </tbody>
+        <ng-template #other_content>
+            <tbody>
+                <tr>
+                    <td colspan="4" style="text-align: center;">
+                        Nenhum usuário para aprovação!
+                    </td>
+                </tr>
+            </tbody>
+        </ng-template>
+    </table>
+    <div class="btn-area">
+        <a routerLink="/home" class="btn btn-secondary">Voltar</a>
+    </div>
+</div>

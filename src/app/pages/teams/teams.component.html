@@ -1,0 +1,39 @@
+<app-title name="Times"></app-title>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Coordenadores</th>
+                <th>Remover</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let team of teams">
+                <td>
+                    <a class="link" routerLink="/teams/edit/{{team.id}}">
+                        {{ team.name }}
+                    </a>
+                </td>
+                <td>
+                    <span style="color: rgb(250, 101, 15)" *ngIf="!team.coordinators.length">Nenhum coordenador
+                        adicionado</span>
+                    <ul>
+                        <li style="color: rgb(7, 7, 7)" *ngFor="let coordinator of team.coordinators">
+                            {{coordinator.userName}};
+                        </li>
+                    </ul>
+                </td>
+                <td style="text-align: center;">
+                    <a (click)="remove(team.id)"><img src="../../../assets/img/icons/delete_forever.svg" title="Remover"
+                            alt="Remover"></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="btn-area">
+        <a routerLink="/home" class="btn btn-secondary btn-margin">Voltar</a>
+        <app-export-button fileName="Times.xlsx"></app-export-button>
+        <a routerLink="/teams/create" class="btn btn-primary submit">Adicionar</a>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+<div class="card text-white bg-info mb-3" style="min-width: 20rem; max-width: 24rem;">
+    <div class="card-header">
+        CRIAR USUÁRIO
+    </div>
+
+    <div class="card-body">
+        <form #userForm="ngForm">
+            <div class="form-group">
+                <label for="name"><span class="required">* </span>Nome Completo:</label>
+                <input id="name" name="name" type="text" [(ngModel)]="data.name" class="form-control input"
+                    placeholder="Digite seu nome completo" required>
+                <div *ngIf="userForm.submitted && userForm.controls['name'].errors" class="text-danger">
+                    Este campo é obrigatório.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email"><span class="required">* </span>Email:</label>
+                <input id="email" name="email" type="email" [(ngModel)]="data.email" class="form-control input"
+                    placeholder="email@exemplo.com.br" required>
+                <div *ngIf="userForm.submitted && userForm.controls['email'].errors" class="text-danger">
+                    Este campo é obrigatório.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="team"><span class="required"></span>Time:</label>
+                <select id="team" name="team" [(ngModel)]="data.teamId" style="height: 32px;" class="form-control input"
+                    required aria-required="true">
+                    <option value="">Selecione o time</option>
+                    <option *ngFor="let team of teams" [value]="team.id">{{team.name}}</option>
+                </select>
+                <div *ngIf="userForm.submitted && userForm.controls['team'].errors" class="text-danger" id="team-error">
+                    Este campo é obrigatório.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password"><span class="required">* </span>Senha:</label>
+                <input id="password" name="password" type="password" [(ngModel)]="data.password"
+                    class="form-control input" placeholder="Digite sua senha" required>
+                <div *ngIf="userForm.submitted && userForm.controls['password'].errors" class="text-danger">
+                    Este campo é obrigatório.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm"><span class="required">* </span>Confirmar Senha:</label>
+                <input id="confirm" name="confirm" type="password" [(ngModel)]="data.confirm" class="form-control input"
+                    placeholder="Confirme sua senha" required>
+                <div *ngIf="userForm.submitted && userForm.controls['confirm'].errors" class="text-danger">
+                    Este campo é obrigatório.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="active"><span class="required"></span>Situação:</label>
+                <select id="active" name="active" [(ngModel)]="data.active" style="height: 32px;"
+                    class="form-control input" required aria-required="true">
+                    <option value="">Selecione um valor</option>
+                    <option value="true">Ativado</option>
+                    <option value="false">Desativado</option>
+                </select>
+            </div>
+
+            <div class="btn-area">
+                <a routerLink="/users" class="btn btn-secondary btn-margin" (click)="cancel()">Cancelar</a>
+                <button class="btn btn-primary submit" type="submit" (click)="save()">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>

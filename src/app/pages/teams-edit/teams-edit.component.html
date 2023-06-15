@@ -1,0 +1,52 @@
+<div>
+    <div class="card text-white bg-info mb-3" style="min-width: 20rem; max-width: 25rem;">
+        <div class="card-header">TIME</div>
+        <div class="card-body">
+            <form #userForm="ngForm">
+                <div class="form-group">
+                    <label for="name"><span class="required">* </span>Nome:</label>
+                    <input id="name" name="name" type="text" [(ngModel)]="data.name" class="form-control input"
+                        placeholder="Digite o nome do time." required>
+                    <div *ngIf="userForm.submitted && userForm.controls['name'].errors" class="text-danger">
+                        Este campo é obrigatório.
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="coordinator">Selecionar Coordenador:</label>
+                    <div class="inline">
+                        <select id="coordinator" name="coordinator" [(ngModel)]="data.coordinatorId"
+                            style="height: 32px; width: 280px;" class="form-control input btn-margin">
+                            <option value="">Selecione o Coordenador</option>
+                            <option *ngFor="let user of users" [value]="user.id">{{user.name}}</option>
+                        </select>
+                        <a (click)="selectedCoordinator()"><img src="../../../assets/img/icons/add_circle.svg" class=""
+                                title="Adicionar" alt="Adicionar"></a>
+                    </div>
+                </div>
+
+                <div *ngIf="data.coordinators.length > 0 else other_content" class="form-group">
+                    <label for="coordinators"><span class="required">* </span>Coordenadores:</label>
+                    <ul>
+                        <li *ngFor="let coordinator of data.coordinators">
+                            {{coordinator.userName}}
+                            <a (click)="removeCoordinator(coordinator.userId)">
+                                <img src="../../../assets/img/icons/remove_circle.svg" class="" title="Remover"
+                                    alt="Remover"></a>
+                        </li>
+                    </ul>
+                </div>
+                <ng-template #other_content>
+                    <label for="coordinators">Coordenadores:</label>
+                    <ul>
+                        <li>Nenhum Coordenador adicionado.</li>
+                    </ul>
+                </ng-template>
+                <div class="btn-area">
+                    <a routerLink="/teams" class="btn btn-secondary btn-margin" (click)="cancel()">Cancelar</a>
+                    <button class="btn btn-primary submit" type="submit" (click)="save()">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<app-title name="Lançamentos"></app-title>
+<div>
+    <div class="btn-area" style="vertical-align:middle;">
+        <span class="btn-margin">Data Inicial: </span>
+        <input type="datetime-local" [(ngModel)]="start" class="btn btn-margin">
+        <span class="btn-margin" style="display: inline;">Data Final: </span>
+        <input type="datetime-local" [(ngModel)]="end" class="btn btn-margin">
+        <button (click)="filterBanks()" class="btn btn-primary" style="height: 30px;">
+            Filtrar
+        </button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Início</th>
+                <th>Fim</th>
+                <th>Descrição</th>
+                <th>Tipo</th>
+                <th>Situação</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="banks.length; else other_content">
+            <tr *ngFor="let bank of banks">
+                <td>
+                    {{ bank.start | date: 'dd/MM/yyyy HH:mm' }}
+                </td>
+                <td>
+                    {{ bank.end | date: 'dd/MM/yyyy HH:mm' }}
+                </td>
+                <td>
+                    {{ bank.description }}
+                </td>
+                <td>
+                    {{ bank.typeId == 1 ? "Acréscimo" : "Desconto" }}
+                </td>
+                <td>
+                    {{ bank.status }}
+                </td>
+            </tr>
+        </tbody>
+        <ng-template #other_content>
+            <tbody>
+                <tr>
+                    <td colspan="5" style="text-align: center;">
+                        Não foi realizado nenhum lançamento!
+                    </td>
+                </tr>
+            </tbody>
+        </ng-template>
+    </table>
+    <div class="btn-area">
+        <a routerLink="/home" class="btn btn-secondary btn-margin">Voltar</a>
+    </div>
+</div>

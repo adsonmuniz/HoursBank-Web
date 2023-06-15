@@ -1,0 +1,41 @@
+<div class="card text-white bg-info mb-3" style="min-width: 20rem; max-width: 24rem;">
+    <div class="card-header">LANÇAR HORAS</div>
+    <div class="card-body">
+        <form #userForm="ngForm">
+            <div class="form-group">
+                <label for="start"><span class="required">* </span>Início:</label>
+                <input id="start" name="start" type="datetime-local" [(ngModel)]="bank.start"
+                    class="btn form-control input" placeholder="" required>
+                <div *ngIf="userForm.submitted && userForm.controls['start'].errors" class="text-danger">
+                    Este campo é obrigatório.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="end"><span class="required">* </span>Fim:</label>
+                <input id="end" name="end" type="datetime-local" [(ngModel)]="bank.end" class="btn form-control input"
+                    placeholder="" required>
+                <div *ngIf="userForm.submitted && userForm.controls['end'].errors" class="text-danger">
+                    Este campo é obrigatório.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description"><span class="required">* </span>Descrição:</label>
+                <textarea id="description" name="description" type="text" [(ngModel)]="bank.description"
+                    class="form-control input" placeholder="Descrição das atividades executadas" required>
+                </textarea>
+                <div *ngIf="userForm.submitted && userForm.controls['description'].errors" class="text-danger">
+                    Este campo é obrigatório.
+                </div>
+            </div>
+
+            <div class="btn-area">
+                <a routerLink="/" class="btn btn-secondary btn-margin" (click)="cancel()">Cancelar</a>
+                <a class="btn-margin" (click)="submit(2)"><img src="../../../assets/img/icons/remove_circle.svg"
+                        title="Desconto"></a>
+                <a (click)="submit(1)"><img src="../../../assets/img/icons/add_circle.svg" title="Acréscimo"></a>
+            </div>
+        </form>
+    </div>
+</div>

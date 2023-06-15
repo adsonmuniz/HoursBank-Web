@@ -1,0 +1,27 @@
+@import '../../../dist/scss/variables.scss';
+
+.submit {
+    margin-top: 16px;
+    width: 96px;
+    text-align: center;
+}
+
+.input {
+    width: 320px;
+}
+
+a {
+    color: $white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+img {
+    filter: invert(0.9) sepia(1) saturate(5) hue-rotate(175deg);
+    margin-right: 4px;
+}
+
+a:hover {
+    filter: invert(0.6) sepia(1) saturate(5) hue-rotate(175deg);
+}

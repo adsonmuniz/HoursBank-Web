@@ -1,0 +1,39 @@
+<app-title name="Usuários"></app-title>
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Time</th>
+                <th>Remover</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users">
+                <td>
+                    <a class="link" routerLink="/user/edit/{{user.id}}">
+                        {{ user.name }}
+                    </a>
+                </td>
+                <td>
+                    {{ user.email }}
+                </td>
+                <td style="text-align: center;">
+                    <span style="color: rgb(250, 101, 15)" *ngIf="!user.teamId">Nenhum time
+                        adicionado</span>
+                    {{user.teamName}}
+                </td>
+                <td style="text-align: center;">
+                    <a (click)="remove(user.id, user.name)"><img src="../../../assets/img/icons/delete_forever.svg"
+                            title="Remover" alt="Remover"></a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="btn-area">
+        <a routerLink="/home" class="btn btn-secondary btn-margin">Voltar</a>
+        <app-export-button fileName="Usuarios.xlsx"></app-export-button>
+        <a routerLink="/user/create" class="btn btn-primary submit">Adicionar</a>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+@import './dist/scss/variables.scss';
+@import "~material-design-icons/iconfont/material-icons.css";
+
+h1 {
+    width: 100%;
+    padding: 8px 0;
+    text-align: center;
+    font-size: 20px;
+    color: $third-color;
+}
+
+h3 {
+    width: 100%;
+    padding: 2px 0;
+    text-align: center;
+    font-size: 16px;
+    color: $primary-color;
+}
+
+.hr {
+    width: 360px;
+    margin-bottom: 16px;
+    border: 2px;
+    border-top: 2px solid $third-color;
+    justify-content: center;
+    align-content: center;
+}
+
+.required {
+    color: $red;
+    font-size: 16px;
+}
+
+.btn-area {
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+.btn-margin {
+    margin-right: 8px;
+}
+
+.card-header {
+    text-align: left !important;
+}
+
+.card-body {
+    text-align: left !important;
+}
+
+.title-area {
+    width: 100%;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+a {
+    cursor: pointer;
+}
+
+input {
+    height: 30px !important;
+}
+
+.inline {
+    display: inline-flex;
+    justify-content: center;
+    table-layout: fixed;
+    flex-direction: row;
+}
