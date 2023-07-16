@@ -1,6 +1,6 @@
 {
     "/api/*": {
-        "target": "https://localhost:44382",
+        "target": "https://bh-backend.azurewebsites.net/",
         "secure": false,
         "changeOrigin": true,
         "logLevel": "debug"

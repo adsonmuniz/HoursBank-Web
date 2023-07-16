@@ -165,6 +165,9 @@ export class LoginService {
               this.messageService.setMessage(this.message);
               this.loadingService.setLoading(false);
               this.router.navigate(['']);
+            } else {
+              this.messageService.setMessage({ text: "Ocorreu um erro ao tentar criar o usuário. Confira se os dados estão corretos. \nTente novamente!", type: "warning" });
+              this.loadingService.setLoading(false);
             }
           },
           (error: any) => {
